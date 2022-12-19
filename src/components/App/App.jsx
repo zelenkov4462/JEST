@@ -1,32 +1,19 @@
-import './App.css';
-import {useEffect, useState} from "react";
+import "./App.css";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import MainPage from "../../pages/MainPage";
+import AboutPage from "../../pages/AboutPage";
+import ErrorPage from "../../pages/ErrorPage";
+import Users from "../Users/Users";
+import UserDetailPage from "../../pages/UserDetailPage";
+import AppRouter from "../router/AppRouter";
+import Navbar from "../Navbar/Navbar";
 
 function App() {
-    const [data, setData] = useState(null)
-    const [toggle, setToggle] = useState(false)
-    const [value, setValue] = useState('')
-
-    const onClick = () => setToggle(prev => !prev)
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setData({})
-        }, 100)
-        return () => {
-            clearTimeout(timer)
-        }
-    }, [])
   return (
-    <div className="App">
-        <div data-testid='value-elem'>{value}</div>
-        {toggle && <div data-testid='toggle-elem'>toggle</div>}
-        {data && <div style={{color: 'red'}}>data</div>}
-      <h1>Hello</h1>
-      <button data-testid='toggle-btn' onClick={onClick}>
-        click me
-      </button>
-      <input onChange={(e) => setValue(e.target.value)} type="text"
-             placeholder='value...'/>
+    <div>
+      <Navbar />
+      <AppRouter />
     </div>
   );
 }
